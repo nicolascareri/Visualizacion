@@ -5,8 +5,25 @@ let context = can.getContext('2d');
 let botonGris = document.getElementById("aplicarGris");
 let botonNormal = document.getElementById("aplicarNormal");
 
+let madera = document.getElementsByClassName("madera");
+let tela = document.getElementsByClassName("tela");
+let cubos = document.getElementsByClassName("cubos");
+
+cubos[0].addEventListener("click", function(){
+    image1.src = "images/cubos.jpg"
+})
+
+tela[0].addEventListener("click", function(){
+    image1.src = "images/linecolors.jpg"
+})
+
+madera[0].addEventListener("click", function(){
+    image1.src = "images/colors.jpg";
+});
+
+
 let image1 = new Image();
-image1.src = "images/colors.jpg";
+image1.src = "images/linecolors.jpg";
 
 image1.onload = function(){
     can.width = this.width;
@@ -21,6 +38,9 @@ image1.onload = function(){
     botonNormal.addEventListener("click", function(){
         aplicarNormal(image);
     }); 
+}
+function cambiarMadera(){
+    alert("madera");
 }
 
 function aplicarNormal(image){
