@@ -6,19 +6,67 @@ import { Line } from "./line.js";
 export class Poligono {
     constructor(){
         this.vertices = []
-        this.centro;
+        this.centro = new Circle();
+        // this.esPoligono = false;
+        this.tieneCentro = false;
+        this.distanciaX = [];
+        this.distanciaY = [];
     }
     dibujar(context){
-        let line;
+        this.dibujarVertices(context);
+        this.unirVertices(context); 
+    }
+    dibujarVertices(context){
+        for (let i = 0; i < this.vertices.length; i++){
+            this.vertices[i].dibujar(context);
+        }
+    }
+    unirVertices(context){
         if(this.vertices.length > 1){
-            for (let i = 0; i < this.vertices.length; i++){
+            for (let i = 0; i < this.vertices.length-1; i++){
                 this.vertices[i].dibujar(context);
-                line = new Line(this.vertices[i], this.vertices[i+1]);
+                let line = new Line(this.vertices[i], this.vertices[i+1]);
                 line.dibujar(context);
             }
+
+            if (this.tieneCentro){
+                let line = new Line(this.vertices[0], this.vertices[this.vertices.length-1])
+                line.dibujar(context);
+            }
+            
         }
-        else{
-            this.vertices[0].dibujar(context);
+    }
+    getDistanciaX(){
+        return this.distanciaX;
+    }
+    getDistanciaY(){
+        return this.distanciaY;
+    }
+    isCenter(x, y){
+        return this.centro.esClickeado(x, y);
+    }
+    clickCentro(x, y){
+        return this.centro.esClickeado(x, y);
+    }
+    calcularCentro(context){
+        let x = 0;
+        let y = 0;
+        for (let i = 0 ; i < this.vertices.length; i++){
+            x += this.vertices[i].getX();
+            y += this.vertices[i].getY();
+        }
+        y = y/this.vertices.length;
+        x = x/this.vertices.length;
+        let c = new Circle(7, x, y, "green");
+        this.centro = c;
+        this.tieneCentro = true;
+        c.dibujar(context);
+        this.calcularDistancia();
+    }
+    calcularDistancia(){
+        for (let i = 0; i < this.vertices.length; i++){
+            this.distanciaX.push(this.centro.getX() - this.vertices[i].getX())
+            this.distanciaY.push(this.centro.getY() - this.vertices[i].getY())
         }
     }
     cerrar(context){
@@ -30,26 +78,16 @@ export class Poligono {
             context.lineTo(ultimo.getX(), ultimo.getY());
             context.stroke();
         }
-
-
-        let x = 0;
-        let y = 0;
-
-        for (let i = 0 ; i < this.vertices.length; i++){
-            x += this.vertices[i].getX();
-            y += this.vertices[i].getY();
-        }
-        y = y/this.vertices.length;
-        x = x/this.vertices.length;
-        let c = new Circle(7, x, y, "#008f39");
-        this.centro = c;
-        c.dibujar(context);
+        this.calcularCentro(context);
     }
-    getX(){
-        return this.centro;
+    hasCenter(){
+        return this.tieneCentro;
     }
     setCentro(centro){
         this.centro = centro;
+    }
+    getCentro(){
+        return this.centro;
     }
     addVertice(c){
         this.vertices.push(c);
@@ -59,5 +97,8 @@ export class Poligono {
     }
     getUltimo(){
         return this.vertices[this.vertices.length-1];
+    }
+    esPoligono(){
+        return this.vertices.length > 2;
     }
 }

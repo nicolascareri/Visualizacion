@@ -6,12 +6,19 @@ export class Circle {
         this.posY = y;
         this.color = color;
     }
+    borrar(context){
+        this.color = 'white';
+        dibujar(context);
+    }
     dibujar(context){
         context.fillStyle = this.color;
         context.beginPath();
         context.arc(this.posX, this.posY, this.radio, 0, 2 * Math.PI);
         context.fill();
         context.stroke();
+    }
+    esClickeado(x, y){
+        return this.radio > Math.sqrt(Math.pow(x - this.posX ,2) + Math.pow(y - this.posY, 2));
     }
     getColor(){
         return this.color;
@@ -24,5 +31,11 @@ export class Circle {
     }
     getY(){
         return this.posY;
+    }
+    setX(x){
+        this.posX = x;
+    }
+    setY(y){
+        this.posY = y;
     }
 }
