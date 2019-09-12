@@ -1,14 +1,14 @@
 'use strict'
 export class Circle {
-    constructor(radio, x, y, color){
+    constructor(radio, x, y, color, centro){
         this.radio = radio;
         this.posX = x;
         this.posY = y;
         this.color = color;
+        this.esCentro = centro;
     }
-    borrar(context){
-        this.color = 'white';
-        dibujar(context);
+    isCentro(){
+        return this.esCentro;
     }
     dibujar(context){
         context.fillStyle = this.color;

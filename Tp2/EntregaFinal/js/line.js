@@ -7,6 +7,7 @@ export class Line {
     }
     dibujar(context){
         context.beginPath();
+        context.strokeStyle='yellow';
         context.moveTo(this.v1.getX(), this.v1.getY());
         context.lineTo(this.v2.getX(), this.v2.getY());
         context.stroke();

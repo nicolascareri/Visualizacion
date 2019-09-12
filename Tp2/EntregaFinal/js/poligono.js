@@ -15,12 +15,16 @@ export class Poligono {
     dibujar(context){
         this.dibujarVertices(context);
         this.unirVertices(context); 
+        if(this.tieneCentro){
+            this.centro.dibujar(context);
+        }
     }
     dibujarVertices(context){
         for (let i = 0; i < this.vertices.length; i++){
             this.vertices[i].dibujar(context);
         }
     }
+    
     unirVertices(context){
         if(this.vertices.length > 1){
             for (let i = 0; i < this.vertices.length-1; i++){
@@ -57,13 +61,12 @@ export class Poligono {
         }
         y = y/this.vertices.length;
         x = x/this.vertices.length;
-        let c = new Circle(7, x, y, "green");
-        this.centro = c;
-        this.tieneCentro = true;
-        c.dibujar(context);
-        this.calcularDistancia();
+        let c = new Circle(7, x, y, "green", true);
+        return c;
     }
     calcularDistancia(){
+        this.distanciaX = [];
+        this.distanciaY = [];
         for (let i = 0; i < this.vertices.length; i++){
             this.distanciaX.push(this.centro.getX() - this.vertices[i].getX())
             this.distanciaY.push(this.centro.getY() - this.vertices[i].getY())
@@ -78,7 +81,11 @@ export class Poligono {
             context.lineTo(ultimo.getX(), ultimo.getY());
             context.stroke();
         }
-        this.calcularCentro(context);
+        let c = this.calcularCentro(context);
+        this.setCentro(c);
+        this.centro.dibujar(context);
+        this.tieneCentro = true;
+        this.calcularDistancia();
     }
     hasCenter(){
         return this.tieneCentro;
