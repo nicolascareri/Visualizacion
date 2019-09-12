@@ -73,7 +73,7 @@ function dibujar(){
     poligono.addVertice(c);
     poligono.dibujar(context);
 }
-    
+
 function cleanCanvas(){
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
