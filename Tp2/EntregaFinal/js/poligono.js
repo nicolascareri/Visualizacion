@@ -61,7 +61,7 @@ export class Poligono {
         }
         y = y/this.vertices.length;
         x = x/this.vertices.length;
-        let c = new Circle(7, x, y, "green", true);
+        let c = new Circle(7, x, y, "rgba(0,255,0,1)", true);
         return c;
     }
     calcularDistancia(){
@@ -76,10 +76,8 @@ export class Poligono {
         if (this.getVertices().length > 2){
             let primero = this.getVertices()[0];
             let ultimo = this.getUltimo();
-            context.beginPath();
-            context.moveTo(primero.getX(), primero.getY());
-            context.lineTo(ultimo.getX(), ultimo.getY());
-            context.stroke();
+            let line = new Line(primero, ultimo);
+            line.dibujar(context);
         }
         let c = this.calcularCentro(context);
         this.setCentro(c);

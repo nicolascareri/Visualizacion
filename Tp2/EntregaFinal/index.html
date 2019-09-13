@@ -9,14 +9,54 @@
     <title>Interfaces Gráficas</title>
 </head>
 <body>
-    <div class="">
-        <canvas class="can" height="400" width="700"></canvas>
-        <button class="btn-primary dibujar">Dibujar</button>
-        <button class="btn-primary cerrar">Cerrar poligono</button>
-        <button class="btn-primary clean">Limpiar Canvas</button>
-        <button class="btn-primary cancelar">Cancelar Dibujo</button>
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+            <h1 class="text-center alert alert-primary">Interfaces de usuario e interacción</h1>
+        </div>
+        <div class="col-2"></div>
     </div>
-
+    <div class="container">
+        <div class="row text-center"> 
+            <div class="col-5"></div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col">
+                        <button class="btn-info btn-lg dibujar">Empezar Poligono</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=""></div>
+                    <div class="col text-center">
+                        <button class="btn-warning btn-lg cerrar">Cerrar Poligono</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <canvas class="can" height="400" width="600"></canvas>
+            </div>
+            <div class="col-3">
+                <button class="btn-danger btn-lg clean">Limpiar Canvas</button>
+                <button class="btn-secundary btn-lg cancelar">Cancelar Dibujo</button>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-4">
+            </div>
+            <div class="col-2">
+            </div>    
+            <div class="col-5">
+            </div>
+        </div>
+    </div>
+        
 
     <script src="js/main.js" type="module"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

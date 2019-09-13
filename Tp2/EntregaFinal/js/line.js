@@ -7,10 +7,13 @@ export class Line {
     }
     dibujar(context){
         context.beginPath();
+        context.lineWidth=3;
         context.strokeStyle='yellow';
         context.moveTo(this.v1.getX(), this.v1.getY());
         context.lineTo(this.v2.getX(), this.v2.getY());
         context.stroke();
         context.closePath();
+        context.lineWidth=1;
+        context.strokeStyle='black';
     }
 }
