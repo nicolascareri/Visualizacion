@@ -73,11 +73,11 @@ canvas.ondblclick = e => {
                 circuloActual = vertices[j];
                 vertices.splice(j, 1);
                 objetoActual.dibujar(context);
-                break;
+                return;
             }
         }
-        
     }   
+
 }
 canvas.onmousemove = e => {
     var x = e.layerX;
