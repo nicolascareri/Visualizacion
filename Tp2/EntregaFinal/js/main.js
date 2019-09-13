@@ -17,10 +17,12 @@ let circuloActual = null;
 
 
 cerrarPol.addEventListener("click", function(){
-    poligono.cerrar(context);
-    poligonos.push(poligono);
-    hasPol = false;
-    dibujo = false;
+    if(poligono.getVertices().length >= 3){
+        poligono.cerrar(context);
+        poligonos.push(poligono);
+        hasPol = false;
+        dibujo = false;
+    }
 });
 cancelar.addEventListener("click", function(){
     dibujo = false;
