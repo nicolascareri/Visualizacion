@@ -14,6 +14,7 @@ let poligono = new Poligono();
 let poligonos = [];
 let objetoActual = null;
 let circuloActual = null;
+let KeyC = false;
 
 
 cerrarPol.addEventListener("click", function(){
@@ -28,6 +29,7 @@ cancelar.addEventListener("click", function(){
     dibujo = false;
 });
 dibujarF.addEventListener("click", function(){
+    event.preventDefault();
     dibujo = true;
 });
 
@@ -37,11 +39,42 @@ clean.addEventListener("click", cleanCanvas);
 
 onkeydown = function(){
     if(event.code == "KeyC"){
-        console.log("hola");
+        KeyC = true;
     }
 };
-
+onkeyup = e =>{
+    KeyC = false;
+}
+onwheel = e =>{
+    // e.preventDefault();
+    if (KeyC){
+        let delta = Math.sign(e.deltaY)
+        console.log(delta);
+        
+        if(delta == '-1'){
+            for (let i = 0 ; i < poligonos.length; i++){
+                for(let j = 0 ; j < poligonos[i].getVertices().length; j++){
+                    console.log("hola");
+                    let c = poligonos[i].getVertices()[j];
+                    c.setColor("rgba(255,100,100,1)");
+                    c.dibujar(context);
+                }
+            }
+        }
+        else{
+            for (let i = 0 ; i < poligonos.length; i++){
+                for(let j = 0 ; j < poligonos[i].getVertices().length; j++){
+                    console.log("hola");
+                    let c = poligonos[i].getVertices()[j];
+                    c.setColor("rgba(255,0,0,1)");
+                    c.dibujar(context);
+                }
+            }
+        }
+    }
+}
 canvas.onmousedown = e => {
+    event.preventDefault();
     var x = e.layerX;
     var y = e.layerY;
     for(let i = 0 ; i< poligonos.length; i++){
@@ -63,6 +96,7 @@ canvas.onmousedown = e => {
     }
 }
 canvas.ondblclick = e => {
+    event.preventDefault();
     var x = e.layerX;
     var y = e.layerY;
     for(let i = 0 ; i< poligonos.length; i++){
@@ -80,6 +114,7 @@ canvas.ondblclick = e => {
 
 }
 canvas.onmousemove = e => {
+    event.preventDefault();
     var x = e.layerX;
     var y = e.layerY;
     if(objetoActual!=null){
