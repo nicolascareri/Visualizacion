@@ -1,0 +1,59 @@
+.background {
+  position: relative; 
+  width: 768px; height: 288px;
+  background-image: url(/Visualizacion/Tp3/EntregaFinal/spriteSheets/background/backgroundsprite.png);
+  animation: fondo 64s steps(4104) infinite;
+  z-index: 20;
+}
+.middle-background{
+  position: relative;
+  width: 768px; height: 288px;
+  background-image: url(/Visualizacion/Tp3/EntregaFinal/spriteSheets/background/middlegroundsprite.png);
+  animation: mediofondo 64s steps(2056) infinite;
+  z-index: 10;
+}
+.front-background{
+  position: relative;
+  width: 768px; height: 274px;
+  background-image: url(/Visualizacion/Tp3/EntregaFinal/spriteSheets/background/frontgroundsprite.png);
+  animation: frente 50s steps(1024) infinite;
+  z-index: 7
+}
+
+.imp{
+  top: 210px;
+  width: 34px; height: 42px;
+  position: relative;
+  background-image: url(/Visualizacion/Tp3/EntregaFinal/spriteSheets/character/oldman-walk.png);
+  animation: imp 2s steps(12) infinite;
+  z-index: 0;
+}
+@keyframes fondo {
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: -1536px 0
+  }
+}
+@keyframes mediofondo{
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: -3072px 0
+  }
+}
+@keyframes frente{
+  0% {
+    background-position: 0 0
+  }
+  100% {
+    background-position: -4140px 0
+  }
+}
+@keyframes imp{
+  100% {
+    background-position: -408px 0
+  }
+}
