@@ -3,18 +3,29 @@
 import { Personaje } from "./personaje.js";
 
 export class Juego{
-    constructor(oldman, back, middle, front, enter){
-        this.back = back;
-        this.middle = middle;
-        this.front = front;
-        this.oldman = oldman;
-        this.personaje = new Personaje(oldman);
-        this.obstaculo = obstaculo;
+    constructor(){
+        this.back =document.getElementsByClassName("background")[0];;
+        this.middle = document.getElementsByClassName("middle-background")[0];
+        this.front = document.getElementsByClassName("front-background")[0];
+        this.personaje = new Personaje();
+        this.obstaculo = document.getElementById("obstaculo"); 
         this.interval;
-        this.enter = enter;
+        this.enter = document.getElementById("screen");;
     }
     isPjDead(){
         return this.personaje.getEstado();
+    }
+    ocultarIntrucciones(){
+        let instruc = document.getElementsByClassName("instructions")[0];
+        let enter = document.getElementById("screen");
+        instruc.hidden = true;        
+        enter.hidden = true;
+    }
+    mostrarInstrucciones(){
+        let instruc = document.getElementsByClassName("instructions")[0];
+        let enter = document.getElementById("screen");
+        instruc.hidden = false;
+        enter.hidden = false;
     }
     matarPJ(){
         this.personaje.setEstado(true);
@@ -37,7 +48,7 @@ export class Juego{
         this.personaje.correr();
     }
     gameOver(){
-        return this.hayColision(this.oldman, this.obstaculo) && !this.isPjDead();
+        return this.hayColision(this.personaje.getHTMLClass(), this.obstaculo) && !this.isPjDead();
     }   
     terminar(){
         this.personaje.iddle();

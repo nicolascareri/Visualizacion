@@ -67,6 +67,15 @@
   background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/press-enter.png);
   z-index: 50;  
 }
+.instructions{
+  left: 75%;
+  bottom: 45%;
+  position: relative;
+  width: 256px; height: 138px;
+  background-size: cover;
+  background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/instructionSpace.png);
+  z-index: 50;
+}
 @keyframes obstaculo{
   0% {
     left: 97%;

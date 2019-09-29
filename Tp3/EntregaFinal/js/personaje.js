@@ -1,7 +1,7 @@
 "use strict";
 export class Personaje{
-    constructor(oldman){ 
-        this.oldman = oldman;
+    constructor(){ 
+        this.oldman = document.getElementById("oldman");
         this.estado;
     }
     getEstado(){
