@@ -24,7 +24,7 @@
 }
 .oldman{
   top: 210px;
-  left: 5%;
+  left: 10%;
   width: 34px; height: 42px;
   position: relative;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/character/oldman-idle.png);
@@ -34,7 +34,7 @@
 }
 .imp{
   top: 210px;
-  left: 5%;
+  left: 10%;
   width: 34px; height: 42px;
   position: relative;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/character/oldman-walk.png);
@@ -43,7 +43,7 @@
 }
 .saltar{
   top: 210px;
-  left: 5%;
+  left: 10%;
   width: 34px; height: 42px;
   position: relative;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/character/oldman-walk.png);
@@ -61,7 +61,7 @@
 }
 .pressEnterText{
   left: 30%;
-  position: relative;
+  position: absolute;
   width: 510px; height: 100px;
   background-size: cover;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/press-enter.png);
@@ -70,10 +70,37 @@
 .instructions{
   left: 75%;
   bottom: 45%;
-  position: relative;
+  position: absolute;
   width: 256px; height: 138px;
   background-size: cover;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/instructionSpace.png);
+  z-index: 50;
+  
+}
+.score{
+  left: 50%;
+  bottom: 50%;
+  text-align: center;
+  text-justify: auto;
+  width: 256px; height: 138px;
+  color:orange;
+  position: absolute;
+  /* background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/Score.png); */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-variant-numeric: oldstyle-nums;
+  z-index: 50;
+}
+.highscore{
+  left: 30%;
+  bottom: 50%;
+  text-align: center;
+  text-justify: auto;
+  width: 256px; height: 138px;
+  color:orange;
+  position: absolute;
+  /* background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/Score.png); */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-variant-numeric: oldstyle-nums;
   z-index: 50;
 }
 @keyframes obstaculo{
@@ -115,13 +142,15 @@
   }
 }
 @keyframes saltar{
+  30% {
+    top: 120px;
+  }
   50% {
     top: 120px;
   }
   60%{
     top: 140px;
   }
-  
   70%{
     top: 160px;
   }

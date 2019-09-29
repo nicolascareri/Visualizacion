@@ -3,6 +3,7 @@ export class Personaje{
     constructor(){ 
         this.oldman = document.getElementById("oldman");
         this.estado;
+        this.saltando;
     }
     getEstado(){
         return this.estado;
@@ -10,9 +11,18 @@ export class Personaje{
     setEstado(estado){
         this.estado = estado;
     }
+    estaSaltando(){
+        return this.saltando;
+    }
+    setSaltando(saltando){
+        this.saltando = saltando;
+    }
     saltar(){
         this.oldman.className = "saltar";     
-        setTimeout(() => {oldman.className = "imp";}, 1000);
+        setTimeout(() => {
+            oldman.className = "imp";
+            this.setSaltando(false);
+        }, 1000);
     }
     correr(){
         this.oldman.className = "imp";

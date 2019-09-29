@@ -9,11 +9,33 @@ export class Juego{
         this.front = document.getElementsByClassName("front-background")[0];
         this.personaje = new Personaje();
         this.obstaculo = document.getElementById("obstaculo"); 
+        this.enter = document.getElementById("screen");
+        this.score = document.getElementsByClassName("score")[0];
+        this.highscore = document.getElementsByClassName("highscore")[0];
+        this.highscorePoint = 0;
         this.interval;
-        this.enter = document.getElementById("screen");;
+    }
+    setScore(score){
+        this.scorepoint = score;
+    }
+    setHighScore(score){
+        this.highscorePoint = score;
+    }
+    actualizarHighScore(){
+
+    }
+    isPjJumping(){
+        return this.personaje.estaSaltando();
     }
     isPjDead(){
         return this.personaje.getEstado();
+    }
+    actualizarPuntuacion(score){
+        this.score.innerHTML = "Score: " + score;
+        if (score > this.highscorePoint){
+            this.highscore.innerHTML = "High Score: " + score;
+            this.setHighScore(score);
+        }
     }
     ocultarIntrucciones(){
         let instruc = document.getElementsByClassName("instructions")[0];
@@ -37,6 +59,7 @@ export class Juego{
         this.personaje.correr();
     }
     saltarPersonaje(){
+        this.personaje.setSaltando(true);
         this.personaje.saltar();
     }
     empezarJuego(){
@@ -44,9 +67,10 @@ export class Juego{
         this.middle.style.animationPlayState = "running";
         this.front.style.animationPlayState = "running";
         this.obstaculo.style.animationPlayState = "running";
-        setTimeout(() => {this.revivirPJ()}, 1000);
+        setTimeout(() => {this.revivirPJ()}, 3000);
         this.personaje.correr();
     }
+
     gameOver(){
         return this.hayColision(this.personaje.getHTMLClass(), this.obstaculo) && !this.isPjDead();
     }   

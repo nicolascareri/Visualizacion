@@ -21,6 +21,7 @@ import {Juego} from "./juego.js";
 
 let playing = false;
 let idRequest;
+let intervalScore = 0;
 let juego = new Juego();
 
 onkeypress = () => {
@@ -29,18 +30,26 @@ onkeypress = () => {
             start();
         }
     }
-    
 }  
-
 function start(){
+    let score = 0;
+    intervalScore = setInterval( () => {
+       score++;
+       juego.actualizarPuntuacion(score);
+    } , 10);
+    playing = true;
     juego.ocultarIntrucciones();
     juego.empezarJuego();
     onclick = () => {
-        juego.saltarPersonaje();
+        if (playing && !juego.isPjJumping()){
+            juego.saltarPersonaje();
+        }
     } 
     onkeydown = () => {
         if(event.code == "Space" || event.code == "ArrowUp"){
-            juego.saltarPersonaje();
+            if(playing && !juego.isPjJumping()){
+                juego.saltarPersonaje();
+            }
         }
     };  
     idRequest = requestAnimationFrame( () => {
@@ -48,9 +57,11 @@ function start(){
     });
 }
 function gameLoop(juego){
-    
+    // let score = 0;;
     if(!juego.gameOver()){
-        requestAnimationFrame(() => {
+        requestAnimationFrame(() => {           
+            // score++;
+            // juego.actualizarPuntuacion(score);
             gameLoop(juego);
         })
     }
@@ -59,6 +70,7 @@ function gameLoop(juego){
         juego.terminar();
         juego.mostrarInstrucciones();
         cancelAnimationFrame(idRequest);
+        clearInterval(intervalScore);
     }
 }
 
