@@ -1,4 +1,3 @@
-
 .background {
   position: relative; 
   width: 100%; height: 288px;
@@ -25,6 +24,7 @@
 }
 .oldman{
   top: 210px;
+  left: 5%;
   width: 34px; height: 42px;
   position: relative;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/character/oldman-idle.png);
@@ -34,7 +34,7 @@
 }
 .imp{
   top: 210px;
-  left: 1%;
+  left: 5%;
   width: 34px; height: 42px;
   position: relative;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/character/oldman-walk.png);
@@ -43,7 +43,7 @@
 }
 .saltar{
   top: 210px;
-  left: 1%;
+  left: 5%;
   width: 34px; height: 42px;
   position: relative;
   background-image: url(/Tp3/EntregaFinal/spriteSheets/character/oldman-walk.png);
@@ -58,6 +58,14 @@
   animation: obstaculo 7s infinite linear;
   animation-play-state: paused;
   z-index: 0;
+}
+.pressEnterText{
+  left: 30%;
+  position: relative;
+  width: 510px; height: 100px;
+  background-size: cover;
+  background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/press-enter.png);
+  z-index: 50;  
 }
 @keyframes obstaculo{
   0% {

@@ -25,11 +25,13 @@ let back = document.getElementsByClassName("background")[0];
 let middle = document.getElementsByClassName("middle-background")[0];
 let front = document.getElementsByClassName("front-background")[0];
 let obstaculo = document.getElementById("obstaculo");
+let enter = document.getElementById("screen");
+
 let idRequest;
 let playing = false;
 
 // console.log(back); q
-let juego = new Juego(oldman, back, middle, front, obstaculo);
+let juego = new Juego(oldman, back, middle, front, obstaculo, enter);
 
 onkeypress = () => {
     if(event.code == "Enter"){
@@ -42,6 +44,7 @@ onkeypress = () => {
 
 function start(){
     playing = true;
+    enter.hidden = true;    
     juego.empezarJuego();
     onkeydown = () => {
         if(event.code == "Space" || event.code == "ArrowUp"){
@@ -62,6 +65,7 @@ function gameLoop(juego){
     else{
         playing = false;
         juego.terminar();
+        enter.hidden = false;
         cancelAnimationFrame(idRequest);
     }
 }

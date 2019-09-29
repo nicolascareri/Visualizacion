@@ -2,6 +2,13 @@
 export class Personaje{
     constructor(oldman){ 
         this.oldman = oldman;
+        this.estado;
+    }
+    getEstado(){
+        return this.estado;
+    }
+    setEstado(estado){
+        this.estado = estado;
     }
     saltar(){
         this.oldman.className = "saltar";     
