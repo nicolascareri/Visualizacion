@@ -35,6 +35,9 @@ onkeypress = () => {
 function start(){
     juego.ocultarIntrucciones();
     juego.empezarJuego();
+    onclick = () => {
+        juego.saltarPersonaje();
+    } 
     onkeydown = () => {
         if(event.code == "Space" || event.code == "ArrowUp"){
             juego.saltarPersonaje();
