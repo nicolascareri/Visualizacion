@@ -67,7 +67,7 @@ export class Juego{
         this.middle.style.animationPlayState = "running";
         this.front.style.animationPlayState = "running";
         this.obstaculo.style.animationPlayState = "running";
-        setTimeout(() => {this.revivirPJ()}, 3000);
+        setTimeout(() => {this.revivirPJ()}, 2000);
         this.personaje.correr();
     }
 
