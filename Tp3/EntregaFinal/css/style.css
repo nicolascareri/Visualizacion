@@ -38,7 +38,7 @@
   width: 34px; height: 42px;
   position: relative;
   background-image: url(../spriteSheets/character/oldman-walk.png);
-  animation: imp 2s steps(12) infinite;
+  animation: imp 0.5s steps(12) infinite;
   z-index: 0;
 }
 .saltar{
@@ -55,49 +55,50 @@
   width: 39px; height: 35px;
   position: relative;
   background-image: url(../spriteSheets/obstaculos/crate.png);
-  animation: obstaculo 7s infinite linear;
+  animation: obstaculo 2s infinite linear;
   animation-play-state: paused;
   z-index: 0;
 }
 .pressEnterText{
+  top: 75%;
   left: 30%;
   position: absolute;
-  width: 510px; height: 100px;
+  width: 90px; height: 18px;
   background-size: cover;
   background-image: url(../spriteSheets/screentext/press-enter.png);
-  z-index: 50;  
+  z-index: 60;  
 }
 .instructions{
-  left: 75%;
-  bottom: 45%;
+  left: 0%;
+  bottom: 50%;
   position: absolute;
-  width: 256px; height: 138px;
-  background-size: cover;
+  width: 256px; height: 50%;
+  background-size: contain;
   background-image: url(../spriteSheets/screentext/instructionSpace.png);
   z-index: 50;
   
 }
-.score{
-  left: 50%;
-  bottom: 50%;
-  text-align: center;
-  text-justify: auto;
-  width: 256px; height: 138px;
-  color:orange;
+.contain-score{
   position: absolute;
+  left: 75%;
+  top: 0px;
+}
+.score{
+  /* text-align: center; */
+  text-justify: auto;
+  color:orange;
+  position: relative;
   /* background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/Score.png); */
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-variant-numeric: oldstyle-nums;
   z-index: 50;
 }
 .highscore{
-  left: 30%;
-  bottom: 50%;
+  /* bottom: 50%; */
   text-align: center;
   text-justify: auto;
-  width: 256px; height: 138px;
   color:orange;
-  position: absolute;
+  position: relative;
   /* background-image: url(/Tp3/EntregaFinal/spriteSheets/screentext/Score.png); */
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-variant-numeric: oldstyle-nums;
